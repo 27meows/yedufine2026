@@ -4,41 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>얘두파인? - 교사를 위한 AI 업무 어시스턴트</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="page-bg" aria-hidden="true"></div>
+
   <main class="page">
     <header class="topbar">
-      <img src="assets/k-edufine-logo.png" alt="K-에듀파인" class="logo" />
-      <div class="top-actions">
-        <button type="button">📖 사용 가이드</button>
-        <button type="button">👤 로그인</button>
-        <button type="button">⚙️</button>
-      </div>
+      <a href="#" class="brand">
+        <img src="assets/k-edufine-logo.png" alt="K-에듀파인" class="logo" />
+        <span class="brand-name">얘두파인?</span>
+      </a>
+      <nav class="top-nav">
+        <span class="nav-badge">MVP</span>
+        <a href="https://github.com" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#guide" class="nav-link">사용방법</a>
+      </nav>
     </header>
 
     <section class="hero">
       <div class="hero-title">
-        <p>이렇게 보내도...?</p>
+        <p class="hero-eyebrow">이렇게내도...?</p>
         <h1>얘두파인?</h1>
-        <strong>교사를 위한 AI 업무 어시스턴트</strong>
+        <p class="hero-subtitle">교사의 업무 문장을 AI가 함께 고민합니다.</p>
       </div>
 
       <div class="hero-service">
-        <nav class="tabs">
-          <button type="button" class="tab active" data-tab="send">💬 이렇게 보내도...?</button>
-          <button type="button" class="tab" data-tab="video">▶️ 보여줘도...?</button>
-          <button type="button" class="tab" data-tab="leave">🏃 조퇴 더 해도...?</button>
-          <button type="button" class="tab" data-tab="document">📄 공문 이대로...?</button>
+        <nav class="tabs" role="tablist" aria-label="서비스 메뉴">
+          <button type="button" class="tab active" data-tab="send" role="tab" aria-selected="true">
+            <span class="tab-icon">💬</span>
+            <span class="tab-label">이렇게내도...?</span>
+          </button>
+          <button type="button" class="tab" data-tab="video" role="tab" aria-selected="false">
+            <span class="tab-icon">▶</span>
+            <span class="tab-label">보여줘도...?</span>
+          </button>
+          <button type="button" class="tab" data-tab="leave" role="tab" aria-selected="false">
+            <span class="tab-icon">🏃</span>
+            <span class="tab-label">조퇴 더 해도...?</span>
+          </button>
+          <button type="button" class="tab" data-tab="document" role="tab" aria-selected="false">
+            <span class="tab-icon">📄</span>
+            <span class="tab-label">공문 이대로...?</span>
+          </button>
         </nav>
 
         <section class="tab-panel">
           <article class="info-card" id="sendPanel">
             <div class="ai-icon">
-              <span>🤖</span>
+              <span>✦</span>
               <small>AI</small>
             </div>
-            <div>
+            <div class="info-card-body">
               <h2>얘두파인이 문장을 다듬어 드립니다.</h2>
               <p>상황과 대상, 말투에 맞게 더 자연스럽고 진심이 잘 전달되는 표현으로 한 번 더 다듬어 드려요.</p>
             </div>
@@ -46,7 +65,7 @@
 
           <article class="info-card locked hidden" id="lockedPanel">
             <div class="lock-icon">🔒</div>
-            <div>
+            <div class="info-card-body">
               <h2 id="lockedTitle">다음 버전에서 제공 예정</h2>
               <p id="lockedDescription">더 다양한 업무를 도와드릴 기능을 준비하고 있어요. 기대해 주세요!</p>
               <b>다음 버전에서 제공 예정</b>
@@ -56,9 +75,12 @@
       </div>
     </section>
 
-    <section class="workspace">
+    <section class="workspace" id="guide">
       <section class="input-card">
-        <h2>✎ 원문 입력</h2>
+        <div class="card-header">
+          <h2>원문 입력</h2>
+          <span class="card-badge">AI 문장 다듬기</span>
+        </div>
 
         <details class="api-details">
           <summary>AI 연결 설정</summary>
@@ -123,49 +145,67 @@
           </div>
         </div>
 
-        <button type="button" id="submitBtn" class="main-btn">✨ 얘두파인?</button>
+        <button type="button" id="submitBtn" class="main-btn">
+          <span class="main-btn-icon">✦</span>
+          얘두파인?
+        </button>
       </section>
 
       <section class="output-area">
         <section id="loadingCard" class="loading-card hidden">
-          <h2>🤔 얘두파인이 고민 중입니다...</h2>
-          <ul>
+          <div class="loading-header">
+            <div class="loading-spinner" aria-hidden="true"></div>
+            <h2>얘두파인이 고민 중입니다...</h2>
+          </div>
+          <ul class="loading-steps">
             <li id="loadStep0">⏳ 상황 분석 중...</li>
             <li id="loadStep1">⏳ 대상 분석 중...</li>
             <li id="loadStep2">⏳ 학교 말투로 변환 중...</li>
             <li id="loadStep3">⏳ 가장 자연스러운 표현 생성 중...</li>
           </ul>
-          <p>잠시만 기다려 주세요.</p>
+          <p class="loading-note">잠시만 기다려 주세요.</p>
         </section>
 
         <section id="emptyState" class="empty-grid">
           <article class="mini-card">
-            <h3>💡 AI 진단 및 점수</h3>
+            <div class="mini-card-icon">✦</div>
+            <h3>AI 진단 및 점수</h3>
             <p>문장을 입력하고 분석을 시작해 주세요.</p>
           </article>
           <article class="mini-card">
-            <h3>💬 추천 문장 3개</h3>
+            <div class="mini-card-icon">💬</div>
+            <h3>추천 문장 3개</h3>
             <p>문장을 입력하고 분석을 시작해 주세요.</p>
           </article>
           <article class="mini-card">
-            <h3>♻️ 수정 포인트</h3>
+            <div class="mini-card-icon">◎</div>
+            <h3>수정 포인트</h3>
             <p>문장을 입력하고 분석을 시작해 주세요.</p>
           </article>
         </section>
 
         <section id="resultCard" class="result-card hidden" aria-live="polite">
-          <article class="result-block">
-            <h3>🤔 얘두파인?</h3>
+          <article class="result-block result-block--diagnosis">
+            <div class="result-block-header">
+              <h3>얘두파인?</h3>
+              <span class="result-tag">AI 진단</span>
+            </div>
             <p id="diagnosisText" class="result-body"></p>
           </article>
 
-          <article class="result-block">
-            <h3>추천 문장 3개</h3>
+          <article class="result-block result-block--options">
+            <div class="result-block-header">
+              <h3>추천 문장 3개</h3>
+              <span class="result-tag">편집 · 복사 가능</span>
+            </div>
             <div id="optionsContainer" class="options-container"></div>
           </article>
 
-          <article class="result-block">
-            <h3>수정 포인트</h3>
+          <article class="result-block result-block--changes">
+            <div class="result-block-header">
+              <h3>수정 포인트</h3>
+              <span class="result-tag">개선 사항</span>
+            </div>
             <ul id="changesList" class="changes-list"></ul>
           </article>
 
@@ -175,11 +215,25 @@
     </section>
 
     <footer class="footer">
-      <img src="assets/k-edufine-logo.png" alt="K-에듀파인" class="footer-logo" />
-      <div><b>교육행정의 효율화를 위한</b><p>AI 연계 교육행정 시스템</p></div>
-      <div><b>🛡️ 안전한 데이터 관리</b><p>교육기관 전용 보안 시스템</p></div>
-      <div><b>🛠️ 편리한 업무 환경</b><p>직관적인 UI로 업무 효율 향상</p></div>
-      <div><b>🔄 지속적인 업데이트</b><p>사용자 의견을 반영한 기능 개선</p></div>
+      <div class="footer-brand">
+        <img src="assets/k-edufine-logo.png" alt="K-에듀파인" class="footer-logo" />
+        <div>
+          <b>교육행정의 효율화를 위한</b>
+          <p>AI 연계 교육행정 시스템</p>
+        </div>
+      </div>
+      <div class="footer-item">
+        <b>안전한 데이터 관리</b>
+        <p>교육기관 전용 보안 시스템</p>
+      </div>
+      <div class="footer-item">
+        <b>편리한 업무 환경</b>
+        <p>직관적인 UI로 업무 효율 향상</p>
+      </div>
+      <div class="footer-item">
+        <b>지속적인 업데이트</b>
+        <p>사용자 의견을 반영한 기능 개선</p>
+      </div>
     </footer>
   </main>
 
