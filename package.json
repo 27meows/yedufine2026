@@ -1,0 +1,16 @@
+{
+  "name": "yedufine",
+  "version": "1.0.0",
+  "description": "얘두파인? - 교사를 위한 AI 업무 어시스턴트",
+  "type": "module",
+  "scripts": {
+    "start": "vercel dev",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "openai": "^4.77.0"
+  },
+  "devDependencies": {
+    "vercel": "^39.1.1"
+  }
+}
